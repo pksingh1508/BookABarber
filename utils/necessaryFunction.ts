@@ -15,6 +15,6 @@ export const getTodayDate = () => {
     const date = new Date().getDate();
     const months = new Date().getMonth();
     const year = new Date().getFullYear();
-    const currentDate = `${date}-${months}-${year}`;
+    const currentDate = `${date}-${months+1}-${year}`;
     return currentDate;
 }

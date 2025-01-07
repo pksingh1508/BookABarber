@@ -7,7 +7,7 @@ import 'react-native-reanimated';
 import { ClerkProvider, useAuth, useUser } from '@clerk/clerk-expo'
 import * as SecureStore from 'expo-secure-store'
 import Colors from '@/constants/Colors';
-import { supabase } from '@/lib/supabase';
+
 import Toast from 'react-native-toast-message';
 import React from 'react';
 import { View } from 'react-native';
@@ -50,9 +50,6 @@ if (!publishableKey) {
 SplashScreen.preventAutoHideAsync();
 
 const RootLayout = () => {
-  const router = useRouter();
-  const { user } = useUser();
-  const { isSignedIn } = useAuth();
   const [loaded] = useFonts({
     "park-r": require('../assets/fonts/Parkinsans-Regular.ttf'),
     "park-m": require('../assets/fonts/Parkinsans-Medium.ttf'),
@@ -65,21 +62,7 @@ const RootLayout = () => {
     }
   }, [loaded]);
 
-  useEffect(() => {
-    async function redirect() {
-      if(isSignedIn) {
-        const phone = user?.primaryPhoneNumber?.phoneNumber;
-        const { data } = await supabase.from('customers').select().eq('phone', phone).single();
-        if(data === null) {
-          router.replace('/barber');
-        } else {
-          // @ts-ignore
-          router.replace('/customer');
-        }
-      }
-    }
-    redirect();
-  }, [isSignedIn])
+  
 
   if (!loaded) {
     return <View />;

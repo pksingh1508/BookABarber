@@ -2,6 +2,7 @@ import React from 'react'
 import { Drawer } from 'expo-router/drawer'
 import Colors from '@/constants/Colors';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 const Layout = () => {
   return (
@@ -32,7 +33,7 @@ const Layout = () => {
       drawerItemStyle: {
         marginVertical: 9
       },
-      drawerStatusBarAnimation: 'slide',
+      drawerStatusBarAnimation: 'fade',
       drawerHideStatusBarOnOpen: true,
     }}>
       <Drawer.Screen name='home' options={{

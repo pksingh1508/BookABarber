@@ -10,7 +10,7 @@ import LocationPicker from '@/components/barber/LocationPicker';
 export default function Settings() {
     const [name, setName] = useState('');
     const { user } = useUser();
-    const { signOut } = useAuth();
+    // const { signOut } = useAuth();
     const router = useRouter();
     const phoneNumbser = user?.primaryPhoneNumber?.phoneNumber;
     const [latitude, setLatitude] = useState(0);
@@ -47,6 +47,22 @@ export default function Settings() {
             Alert.alert("Something went wrong while saving the Information");
         }
     }
+    // const logoutToast = () => {
+    //     Toast.show({
+    //       type: 'success',
+    //       text1: 'Logout Successfully 👋'
+    //     });
+    // }
+
+    // const logout = async() => {
+    //     try {
+    //         await signOut();
+    //         router.replace('/');
+    //         logoutToast();
+    //     } catch(err) {
+    //         Alert.alert("Error while logout.")
+    //     }
+    // }
 
     const nameSaved = () => {
         Toast.show({

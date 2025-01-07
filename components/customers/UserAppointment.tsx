@@ -18,17 +18,10 @@ interface UserAppointmentProps {
 }
 
 export default function UserAppointment({barberPhone, date, duration, service, startTime, status, id, onPress}: UserAppointmentProps) {
-  const deleteToast = () => {
-    Toast.show({
-      type: 'success',
-      text1: 'Appointment Deleted Successfully ✔️✔️'
-    })
-  }
   
   const deleteHandler = async () => {
     try {
       await supabase.from('appointments').delete().eq('id', id);
-      deleteToast();
       onPress();
     } catch (err) {
       Alert.alert("Something wrong while deleting the appointments");

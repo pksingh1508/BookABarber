@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { isClerkAPIResponseError, useSignIn, useSignUp } from '@clerk/clerk-expo';
 import Colors from '@/constants/Colors';
+import { PhoneCodeFactor } from "@clerk/types";
 
 export default function OTP() {
   const {role} = useLocalSearchParams<{role: string}>();
@@ -20,7 +21,7 @@ export default function OTP() {
       const e164PhoneNumber = `+91${cleanedNumber}`;
       await signUp!.create({phoneNumber: e164PhoneNumber});
       const resp = await signUp!.preparePhoneNumberVerification();
-      router.push(`/verify/${phoneNumber}?role=${role}`);
+      router.push(`/verify/${phoneNumber}?role=${role}&signin=false`);
     } catch (error) {
       if(isClerkAPIResponseError(error)) {
         if(error.errors[0].code === 'form_identifier_exists'){
@@ -35,23 +36,39 @@ export default function OTP() {
   }
 
   const trySignIn = async () => {
-    const { supportedFirstFactors } = await signIn!.create({
-      identifier: phoneNumber,
-    })
-    const firstPhoneFactor: any = supportedFirstFactors?.find((factor: any) => {
-      return factor.strategy === 'phone_code';
-    })
-    const {phoneNumberId} = firstPhoneFactor;
-    await signIn!.prepareFirstFactor({
-      strategy: 'phone_code',
-      phoneNumberId,
-    })
-    router.push(`/verify/${phoneNumber}?signin=true`);
-    setLoading(false);
+    try {
+      const cleanedNumber = phoneNumber.replace(/\D/g, '');
+      const e164PhoneNumber = `+91${cleanedNumber}`;
+      
+      const { supportedFirstFactors } = await signIn!.create({
+        identifier: e164PhoneNumber,
+      });
+  
+      const firstPhoneFactor = supportedFirstFactors?.find(
+        (factor): factor is PhoneCodeFactor => factor.strategy === 'phone_code'
+      );
+      
+      if (!firstPhoneFactor) {
+        throw new Error('Phone authentication not supported');
+      }
+      
+      await signIn!.prepareFirstFactor({
+        strategy: 'phone_code',
+        phoneNumberId: firstPhoneFactor.phoneNumberId,
+      });
+  
+      router.push(`/verify/${phoneNumber}?role=${role}&signin=true`);
+    } catch (error) {
+      Alert.alert('Error', 'Failed to initiate sign in');
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   }
 
+
   return (
-    <KeyboardAvoidingView behavior='padding' keyboardVerticalOffset={keyboardVerticalOffset} style={styles.mainContainer}>
+    <View style={styles.mainContainer}>
       {loading && <View style={styles.loading}>
             <ActivityIndicator size={'large'} color={Colors.orange100}/>
             <Text style={{fontSize: 18, padding: 10, color: Colors.white100, fontFamily: 'park-m'}}>Sending Code...</Text>
@@ -68,6 +85,7 @@ export default function OTP() {
             value={phoneNumber}
             onChangeText={setPhoneNumber}
             style={styles.input}
+            autoFocus={true}
           />
         </View>
 
@@ -79,7 +97,7 @@ export default function OTP() {
         
       </View>
 
-    </KeyboardAvoidingView>
+    </View>
   )
 }
 
@@ -89,7 +107,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary500,
   },
   inputContainer: {
-    height: '95%',
+    height: '85%',
     paddingHorizontal: 10,
     marginHorizontal: 12,
     justifyContent: 'space-between'

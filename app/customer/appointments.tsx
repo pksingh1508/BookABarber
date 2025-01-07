@@ -20,10 +20,20 @@ export default function Appointments() {
         text1: 'Page Refresh Successfully ✔️ ✔️'
       })
     }
+    const deleteToast = () => {
+        Toast.show({
+          type: 'success',
+          text1: 'Appointment Deleted Successfully ✔️✔️'
+        })
+      }
   
     const changeFlag = () => {
       setFlag(!flag);
       refreshToast();
+    }
+    const deleteHandler = () => {
+      setFlag(!flag);
+      deleteToast();
     }
 
   useEffect(() => {
@@ -57,7 +67,7 @@ export default function Appointments() {
         <FlatList 
           data={res}
           keyExtractor={(item) => item.id}
-          renderItem={({item}) => (<UserAppointment {...item} onPress={changeFlag}/>)}
+          renderItem={({item}) => (<UserAppointment {...item} onPress={deleteHandler}/>)}
         />
       )}
     </View>

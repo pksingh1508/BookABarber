@@ -121,10 +121,10 @@ export default function MapScreen() {
         style={styles.map}
         mapType='hybrid'
         initialRegion={{
-          latitude: userLat || 0,
-          longitude: userLgt || 0,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
+          latitude: userLat || 26.716442,
+          longitude: userLgt || 83.448663,
+          latitudeDelta: 1.0,
+          longitudeDelta: 0.2,
         }}
       >
         {barbers.map((barber: any, index: number) => (
@@ -141,11 +141,11 @@ export default function MapScreen() {
         ))}
         <Marker
           coordinate={{
-            latitude: 26.7066039,
-            longitude: 83.4481865,
+            latitude: userLat,
+            longitude: userLgt,
           }}
-          title='Home'
-          image={require('@/assets/images/house.png')}
+          pinColor="green"
+          title="Your Current Location"
         />
       </MapView>
 
