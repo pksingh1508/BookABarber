@@ -80,7 +80,7 @@ const RootLayout = () => {
           fontFamily: 'park-m'
         },
         headerStyle: {
-          backgroundColor: Colors.background100,
+          backgroundColor: 'black',
         },
         headerTintColor: Colors.orange100,
       }}/>

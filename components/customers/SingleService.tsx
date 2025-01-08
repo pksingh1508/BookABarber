@@ -42,10 +42,11 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         width: '76%',
         alignItems: 'center',
-        backgroundColor: Colors.background,
+        backgroundColor: Colors.backgroundFade,
         marginHorizontal: 50,
         marginVertical: 10,
-        borderRadius: 15
+        borderRadius: 15,
+        elevation: 7
     },
     textContainer: {
         justifyContent: 'center'
@@ -53,12 +54,13 @@ const styles = StyleSheet.create({
     name: {
         fontSize: 24, 
         fontFamily: 'park-b',
-        color: Colors.white100
+        color: Colors.blue,
+        textAlign: 'center'
     },
     duration: {
         fontSize: 15,
         fontFamily: 'park-r',
-        color: '#ccc',
+        color: Colors.white,
         textAlign: 'center',
         paddingVertical: 6
     }

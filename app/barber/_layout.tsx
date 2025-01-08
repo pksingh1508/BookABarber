@@ -19,8 +19,8 @@ const Layout = () => {
       drawerStyle: {
         backgroundColor: Colors.background
       },
-      drawerActiveBackgroundColor: Colors.background100,
-      drawerActiveTintColor: Colors.orange100,
+      drawerActiveBackgroundColor: Colors.blue,
+      drawerActiveTintColor: 'black',
       drawerLabelStyle: {
         fontSize: 20,
         fontFamily: 'park-m',

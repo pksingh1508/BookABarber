@@ -6,6 +6,7 @@ import {services} from '@/assets/data/services';
 import SingleService from '@/components/customers/SingleService';
 import { useUser } from '@clerk/clerk-expo';
 import { supabase } from '@/lib/supabase';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Page() {
   const [userName, setUserName] = useState('');
@@ -26,6 +27,11 @@ export default function Page() {
 
   return (
     <View style={styles.container}>
+      <LinearGradient
+        // Background Linear Gradient
+        colors={['rgba(2,2,2,255)' , 'rgba(46,47,47,255)']}
+        style={styles.background}
+      />
       <Drawer.Screen options={{title: `Hi, ${userName}`}}/>
       <Text style={styles.serviceText}>Choose Any Services...</Text>
       <FlatList 
@@ -41,13 +47,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.primary500,
-    paddingBottom: 15
+    // paddingBottom: 15
   }, 
   serviceText: {
     fontSize: 25,
     fontFamily: 'park-m',
     textAlign: 'center',
-    color: Colors.white100,
+    color: Colors.white,
     paddingVertical: 12
+  },
+  background: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: '100%'
   }
 });

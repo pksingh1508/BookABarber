@@ -54,8 +54,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         gap: 10,
         justifyContent: 'space-between',
-        // marginTop: 20,
-        backgroundColor: Colors.background,
+        backgroundColor: Colors.backgroundFade,
         marginHorizontal: 1,
         paddingHorizontal: 25,
         paddingVertical: 20,
@@ -63,13 +62,13 @@ const styles = StyleSheet.create({
     },
     chooseBtn: {
         flexDirection: 'row',
-        backgroundColor: Colors.orange100,
+        backgroundColor: Colors.blue,
         paddingVertical: 12,
         paddingHorizontal: 20,
         borderRadius: 10
     },
     time: {
-        color: Colors.orange100,
+        color: Colors.blue,
         fontSize: 25,
         fontFamily: 'park-m',
         verticalAlign: 'middle'

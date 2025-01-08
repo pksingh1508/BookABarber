@@ -1,7 +1,7 @@
 import { Alert, Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import Colors from '@/constants/Colors';
-import { Entypo } from '@expo/vector-icons';
+import { AntDesign, Entypo } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 import { supabase } from '@/lib/supabase';
 import Toast from 'react-native-toast-message';
@@ -77,8 +77,11 @@ return (
         onRequestClose={closeModal}
       >
         <View style={styles.modalContainer}>
-            <BlurView intensity={40} style={[StyleSheet.absoluteFill, styles.blurContainer]}>
+            <BlurView intensity={100} style={[StyleSheet.absoluteFill, styles.blurContainer]}>
                 <View style={styles.modalContent}>
+                    <TouchableOpacity onPress={closeModal}>
+                        <AntDesign name="closecircle" size={30} color='red' style={{textAlign: 'right', paddingLeft: 8, paddingBottom: 9}}/>
+                    </TouchableOpacity>
                     <View style={styles.top}>
                         <Text style={styles.heading}>{service}</Text>
                         <Text style={styles.heading}>{startTime}</Text>
@@ -105,10 +108,11 @@ return (
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Colors.background,
+        backgroundColor: Colors.backgroundFade,
         margin: 12,
         borderRadius: 5,
-        padding: 12
+        padding: 12,
+        elevation: 8
     },
     top: {
         flexDirection: 'row',
@@ -117,12 +121,12 @@ const styles = StyleSheet.create({
     heading: {
         fontSize: 29,
         fontFamily: 'park-m',
-        color: Colors.orange100
+        color: Colors.blue
     },
     text: {
         fontSize: 17,
         fontFamily: 'park-m',
-        color: Colors.white100
+        color: Colors.white
     },
     modalContainer: {
         flex: 1
@@ -147,7 +151,7 @@ const styles = StyleSheet.create({
     btn: {
         flexDirection: 'row',
         gap: 9,
-        backgroundColor: Colors.orange100,
+        backgroundColor: Colors.blue,
         paddingVertical: 14,
         paddingHorizontal: 20,
         borderRadius: 12

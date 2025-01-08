@@ -6,6 +6,7 @@ import { useAuth, useUser } from '@clerk/clerk-expo';
 import Toast from 'react-native-toast-message';
 import { useRouter } from 'expo-router';
 import LocationPicker from '@/components/barber/LocationPicker';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Settings() {
     const [name, setName] = useState('');
@@ -78,13 +79,18 @@ export default function Settings() {
 
   return (
     <View style={styles.container}>
+        <LinearGradient
+            // Background Linear Gradient
+            colors={['rgba(2,2,2,255)' , 'rgba(46,47,47,255)']}
+            style={styles.background}
+        />
         <View style={{flex: 1}}>
             <View style={{padding: 16}}>
                 <Text style={styles.nameText}>Name:</Text>
                 <TextInput 
                 placeholder=' Enter your Name...'
-                placeholderTextColor={Colors.white100}
-                cursorColor={Colors.orange100}
+                placeholderTextColor={Colors.whiteFade}
+                cursorColor={Colors.whiteFade}
                 keyboardType='default'
                 value={name}
                 onChangeText={setName}
@@ -129,8 +135,8 @@ const styles = StyleSheet.create({
         color: Colors.white100
     },
     nameText: {
-        fontSize: 15,
-        fontFamily: 'mon-m',
+        fontSize: 20,
+        fontFamily: 'park-m',
         color: Colors.white100,
         paddingLeft: 5
     },
@@ -138,18 +144,18 @@ const styles = StyleSheet.create({
         marginBottom: 25
     },
     saveContainer: {
-        marginVertical: 10,
-        marginHorizontal: 10,
-        backgroundColor: Colors.orange100,
+        margin: 16,
+        backgroundColor: Colors.blue,
         paddingVertical: 12,
         paddingHorizontal: 10,
-        borderRadius: 10
+        borderRadius: 10,
+        elevation: 6
     }, 
     saveText: {
         textAlign: 'center',
         fontSize: 23,
         fontFamily: 'park-m',
-        color: Colors.white100
+        color: 'black'
     },
     inputContainer: {
         padding: 12
@@ -158,5 +164,12 @@ const styles = StyleSheet.create({
         fontSize: 19,
         fontFamily: 'park-m',
         color: Colors.white100
+    },
+    background: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        height: '100%'
     }
 });

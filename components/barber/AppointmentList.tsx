@@ -30,10 +30,11 @@ return (
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Colors.background,
+        backgroundColor: Colors.backgroundFade,
         margin: 12,
         borderRadius: 5,
-        padding: 12
+        padding: 12,
+        elevation: 7
     },
     top: {
         flexDirection: 'row',
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 17,
         fontFamily: 'park-m',
-        color: Colors.white100
+        color: Colors.white
     },
     modalContainer: {
         flex: 1

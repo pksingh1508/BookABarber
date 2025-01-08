@@ -4,6 +4,7 @@ import { Stack, useLocalSearchParams } from 'expo-router';
 import { isClerkAPIResponseError, useSignIn, useSignUp } from '@clerk/clerk-expo';
 import Colors from '@/constants/Colors';
 import { supabase } from '@/lib/supabase';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Page() {
   const {phone, signin, role} = useLocalSearchParams<{phone: string, signin: string, role: string}>();
@@ -126,10 +127,15 @@ export default function Page() {
 
   return (
     <View style={styles.container}>
+      <LinearGradient
+        // Background Linear Gradient
+        colors={['rgba(2,2,2,255)','rgba(46,47,47,255)']}
+        style={styles.background}
+      />
       <Stack.Screen options={{
         headerTitle: `+91${phone}`,
         headerStyle: {
-          backgroundColor: Colors.primary500
+          backgroundColor: 'black'
         },
         headerTitleStyle: {
           color: Colors.white100,
@@ -143,7 +149,7 @@ export default function Page() {
       <View style={styles.inputContainer}>
         <TextInput 
           placeholder=' Enter 6 digit Code'
-          placeholderTextColor='#ccc'
+          placeholderTextColor={Colors.whiteFade}
           cursorColor={Colors.orange100}
           keyboardType='number-pad'
           maxLength={10}
@@ -207,8 +213,15 @@ const styles = StyleSheet.create({
   text: {
     paddingHorizontal: 21,
     fontSize: 17,
-    color: Colors.white100,
+    color: Colors.white,
     textAlign: 'center',
     paddingVertical: 9
-  }
+  },
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: '100%',
+  },
 });

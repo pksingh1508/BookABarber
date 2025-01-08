@@ -14,7 +14,14 @@ export default {
   white100: '#fafbfb',
   white200: '#E9ECEF',
   white300: '#DEE2E6',
+  background100: '#161716',
 
-  background: '#313131',
-  background100: '#161716'
+  
+  background: '#1c1d1d',
+  backgroundFade: '#353535',
+  green: '#2ee34b',
+  white: '#d7d7d6',
+  whiteFade: '#919191',
+  blue: '#8ac5fb',
+  orange: '#fa9a01'
 }

@@ -3,7 +3,7 @@ export const services = [
       id: 1,
       name: "Haircut",
       duration: "30",
-      image: 'https://i.ibb.co/tYSq9SK/hair-dye.png'
+      image: 'https://i.ibb.co/sFDJ1hC/haircuts.png'
     },
     {
       id: 2,

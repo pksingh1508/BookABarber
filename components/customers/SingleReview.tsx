@@ -19,7 +19,7 @@ export default function SingleReview({message, rating}: SingleReviewProps) {
 const styles = StyleSheet.create({
     container: {
         maxWidth: 250,
-        backgroundColor: Colors.background,
+        backgroundColor: Colors.backgroundFade,
         borderRadius: 10,
         marginRight: 10,
         padding: 9,

@@ -2,7 +2,6 @@ import React from 'react'
 import { Drawer } from 'expo-router/drawer'
 import Colors from '@/constants/Colors';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 const Layout = () => {
   return (
@@ -20,15 +19,15 @@ const Layout = () => {
       drawerStyle: {
         backgroundColor: Colors.background
       },
-      drawerActiveBackgroundColor: Colors.background100,
-      drawerActiveTintColor: Colors.orange100,
+      drawerActiveBackgroundColor: Colors.blue,
+      drawerActiveTintColor: 'black',
       drawerLabelStyle: {
         fontSize: 20,
         fontFamily: 'park-m',
         textAlign: 'center',
         paddingVertical: 8
       },
-      drawerInactiveTintColor: Colors.white100,
+      drawerInactiveTintColor: Colors.white,
       drawerInactiveBackgroundColor: Colors.primary200,
       drawerItemStyle: {
         marginVertical: 9

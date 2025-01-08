@@ -31,8 +31,8 @@ export default function UserAppointment({barberPhone, date, duration, service, s
   return (
     <View style={styles.container}>
       <View style={styles.top}>
-        <Text style={[styles.text, {color: status === 'pending' ? Colors.orange100 : 'green'}]}>{service}</Text>
-        <Text style={[styles.text, {color: status === 'pending' ? Colors.orange100 : 'green'}]}>{startTime}</Text>
+        <Text style={[styles.text, {color: status === 'pending' ? Colors.blue : 'green'}]}>{service}</Text>
+        <Text style={[styles.text, {color: status === 'pending' ? Colors.blue : 'green'}]}>{startTime}</Text>
       </View>
       <View style={styles.top}>
         <Text style={styles.text2}>Shop Mob : {barberPhone}</Text>
@@ -60,10 +60,11 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: 19,
     marginVertical: 10,
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.backgroundFade,
     borderRadius: 7,
     paddingHorizontal: 17,
-    paddingVertical: 18
+    paddingVertical: 18,
+    elevation: 6
   },
   top: {
     flexDirection: 'row',

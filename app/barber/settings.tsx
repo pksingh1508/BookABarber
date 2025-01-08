@@ -8,6 +8,7 @@ import Toast from 'react-native-toast-message';
 import { supabase } from '@/lib/supabase';
 import { useUser } from '@clerk/clerk-expo';
 import Drawer from 'expo-router/drawer';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Settings() {
   const [barberDetails, setBarberDetails] = useState<any>();
@@ -87,6 +88,11 @@ export default function Settings() {
 
   return (
     <ScrollView style={styles.container}>
+      <LinearGradient
+        // Background Linear Gradient
+        colors={['rgba(46,47,47,255)', 'rgba(2,2,2,255)']}
+        style={styles.background}
+      />
       <Drawer.Screen options={{
         headerRight: () => (
           <TouchableOpacity style={{paddingRight: 20}} onPress={saveHandler}>
@@ -98,7 +104,7 @@ export default function Settings() {
         <Text style={styles.label}>Name</Text>
         <TextInput 
           placeholder=' Enter Your Name'
-          placeholderTextColor={Colors.white100}
+          placeholderTextColor={Colors.whiteFade}
           cursorColor={Colors.orange100}
           keyboardType='default'
           value={name}
@@ -110,7 +116,7 @@ export default function Settings() {
         <Text style={styles.label}>ShopName</Text>
         <TextInput 
           placeholder=' Enter Your ShopName'
-          placeholderTextColor={Colors.white100}
+          placeholderTextColor={Colors.whiteFade}
           cursorColor={Colors.orange100}
           keyboardType='default'
           value={shopName}
@@ -137,8 +143,7 @@ export default function Settings() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.primary500,
-    padding: 7
+    backgroundColor: 'black'
   },
   inputContainer: {
     padding: 12
@@ -147,6 +152,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.white200,
     borderWidth: 1,
     paddingHorizontal: 5,
+    paddingVertical: 9,
     borderRadius: 8,
     fontSize: 20,
     fontFamily: 'park-r',
@@ -156,5 +162,12 @@ const styles = StyleSheet.create({
     fontSize: 19,
     fontFamily: 'park-m',
     color: Colors.white100
+  },
+  background: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: '100%'
   }
 });

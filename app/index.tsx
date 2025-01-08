@@ -4,6 +4,8 @@ import { Link, Stack, useRouter } from 'expo-router';
 import Colors from '@/constants/Colors';
 import { supabase } from '@/lib/supabase';
 import { useAuth, useUser } from '@clerk/clerk-expo';
+import { LinearGradient } from 'expo-linear-gradient';
+
 
 export default function MainPage() {
   const router = useRouter();
@@ -32,6 +34,11 @@ export default function MainPage() {
 
   return (
     <View style={styles.container}>
+      <LinearGradient
+        // Background Linear Gradient
+        colors={['rgba(46,47,47,255)', 'rgba(2,2,2,255)']}
+        style={styles.background}
+      />
       {loading ? (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
           <View style={{flexDirection: 'row', gap: 5}}>
@@ -43,7 +50,7 @@ export default function MainPage() {
         <View>
           <View style={{paddingTop: 180}}/>
           <View style={styles.middleContainer}>
-            <Text style={styles.heading}>I am a</Text>
+            <Text style={styles.heading}>I am a ,</Text>
             <View style={styles.itemContainer}>
               <Link href={'/otp?role=barber'}>
                 <View style={styles.item}>
@@ -66,13 +73,13 @@ export default function MainPage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.primary500
+    backgroundColor: Colors.background
   },
   middleContainer: {
     padding: 30
   },
   heading: {
-    color: Colors.orange100,
+    color: Colors.green,
     fontSize: 50,
     paddingVertical: 20,
     fontFamily: 'park-b'
@@ -83,17 +90,23 @@ const styles = StyleSheet.create({
   },
   item: {
     width: '100%',
-    height: 100,
-    backgroundColor: Colors.primary400,
+    height: 90,
+    backgroundColor: Colors.backgroundFade,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 9,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: Colors.orange100
+    elevation: 7
   },
   itemText: {
-    color: Colors.white100,
-    fontSize: 25,
-    fontFamily: 'park-r'
-  }
+    color: Colors.blue,
+    fontSize: 40,
+    fontFamily: 'park-m'
+  },
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: '100%',
+  },
 });

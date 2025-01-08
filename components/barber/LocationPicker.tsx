@@ -47,7 +47,7 @@ export default function LocationPicker({onPress, lat, lgt}: LocationPickerProps)
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Colors.background,
+        backgroundColor: Colors.backgroundFade,
         padding: 15,
         borderRadius: 10,
         gap: 15
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     btn: {
         flexDirection: 'row',
         gap: 2,
-        backgroundColor: Colors.orange100,
+        backgroundColor: Colors.blue,
         paddingVertical: 12,
         paddingHorizontal: 14,
         borderRadius: 9

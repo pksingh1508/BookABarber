@@ -20,16 +20,16 @@ export default function SingleAppointment({startTime, duration}: SingleAppointme
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.backgroundFade,
     marginRight: 10,
     width: 150,
     borderRadius: 10,
-    padding: 9,
+    paddingVertical: 14,
     justifyContent: 'center',
     gap: 7
   },
   text: {
-    color: Colors.white300,
+    color: Colors.white,
     textAlign: 'center',
     fontSize: 18,
     fontFamily: 'park-m'

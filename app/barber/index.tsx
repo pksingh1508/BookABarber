@@ -7,6 +7,7 @@ import Colors from '@/constants/Colors';
 import Drawer from 'expo-router/drawer';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Toast from 'react-native-toast-message';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Page() {
   const [appointments, setAppointments] = useState<any>([]);
@@ -40,6 +41,11 @@ export default function Page() {
 
   return (
     <View style={styles.container}>
+      <LinearGradient
+        // Background Linear Gradient
+        colors={['rgba(46,47,47,255)', 'rgba(2,2,2,255)']}
+        style={styles.background}
+      />
        <Drawer.Screen 
         options={{
           headerRight: () => (
@@ -52,7 +58,7 @@ export default function Page() {
       <View style={{paddingTop: 20}}/>
       {appointments.length <= 0 ? (
         <View style={{alignItems: 'center', justifyContent: 'center', height: '90%'}}>
-          <Text style={{color: Colors.orange100, fontSize: 23, fontFamily: 'park-m'}}>No Appointments Today.</Text>
+          <Text style={{color: Colors.blue, fontSize: 23, fontFamily: 'park-m'}}>No Appointments Today.</Text>
         </View>
       ) : (
         <FlatList
@@ -70,5 +76,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.primary500
+  },
+  background: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: '100%'
   }
 });

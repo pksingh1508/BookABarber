@@ -7,6 +7,7 @@ import { useService } from '@/store/CurrentService';
 import { formatTime, getTodayDate, isValidTime } from '@/utils/necessaryFunction';
 import { useUser } from '@clerk/clerk-expo';
 import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import { View, Text, Modal, StyleSheet, TouchableOpacity, ScrollView, FlatList, Alert } from 'react-native';
@@ -144,7 +145,6 @@ export default function MapScreen() {
             latitude: userLat,
             longitude: userLgt,
           }}
-          pinColor="green"
           title="Your Current Location"
         />
       </MapView>
@@ -157,32 +157,36 @@ export default function MapScreen() {
       >
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
-
+          <LinearGradient
+            // Background Linear Gradient
+            colors={['rgba(46,47,47,255)', 'rgba(2,2,2,255)']}
+            style={styles.background}
+          />
             <View>
               <TouchableOpacity onPress={closeModal}>
-                <AntDesign name="closecircle" size={34} color={Colors.orange100} style={{textAlign: 'right', padding: 8}}/>
+                <AntDesign name="closecircle" size={34} color='red' style={{textAlign: 'right', padding: 8}}/>
               </TouchableOpacity>
               <View style={{width: '100%', paddingLeft: 10, gap: 5}}>
                 <Text style={styles.shopName}>{selectedLocation?.shopName}</Text>
-                <Text style={{color: Colors.white100, fontSize: 19, fontFamily: 'park-r'}}>Phone: {selectedLocation?.phone}</Text>
+                <Text style={{color: Colors.white, fontSize: 19, fontFamily: 'park-r'}}>Phone: {selectedLocation?.phone}</Text>
               </View>
               <View style={styles.timeContainer}>
                 <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                  <Text style={styles.timeText}>Opening Time: </Text>
-                  <Text style={styles.timeText}>{selectedLocation?.openTime}</Text>
+                  <Text style={styles.openTimeText}>Opening Time: </Text>
+                  <Text style={styles.openTimeText}>{selectedLocation?.openTime}</Text>
                 </View>
                 <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                  <Text style={styles.timeText}>Closing Time: </Text>
-                  <Text style={styles.timeText}>{selectedLocation?.closingTime}</Text>
+                  <Text style={styles.closeTimeText}>Closing Time: </Text>
+                  <Text style={styles.closeTimeText}>{selectedLocation?.closingTime}</Text>
                 </View>
               </View>
               <View style={{maxHeight: 160, paddingHorizontal: 11}}>
-                <Text style={{color: Colors.white100, fontSize: 23, fontFamily: 'park-m', textAlign:'center',
+                <Text style={{color: Colors.white, fontSize: 23, fontFamily: 'park-m', textAlign:'center',
                   paddingBottom: 10
                 }}>What People Says:</Text>
                 {reviews.length <= 0 ? (
-                  <View style={{backgroundColor: Colors.primary500, paddingHorizontal: 12, paddingVertical: 19, borderRadius: 10}}>
-                    <Text style={{color: Colors.white100, fontSize: 21, fontFamily: 'park-b', textAlign: 'center'}}>No review yet.</Text>
+                  <View style={{backgroundColor: Colors.backgroundFade, paddingHorizontal: 12, paddingVertical: 19, borderRadius: 10}}>
+                    <Text style={{color: Colors.whiteFade, fontSize: 21, fontFamily: 'park-b', textAlign: 'center'}}>No review yet.</Text>
                   </View>
                 ) : (
                   <FlatList 
@@ -200,8 +204,8 @@ export default function MapScreen() {
                   paddingBottom: 10
                 }}>Today Appointments:</Text>
                 {appointments.length <= 0 ? (
-                  <View style={{backgroundColor: Colors.primary500, paddingHorizontal: 12, paddingVertical: 19, borderRadius: 10}}>
-                    <Text style={{color: Colors.white100, fontSize: 21, fontFamily: 'park-b', textAlign: 'center'}}>No Appointments.</Text>
+                  <View style={{backgroundColor: Colors.backgroundFade, paddingHorizontal: 12, paddingVertical: 19, borderRadius: 10}}>
+                    <Text style={{color: Colors.whiteFade, fontSize: 21, fontFamily: 'park-b', textAlign: 'center'}}>No Appointments.</Text>
                 </View>
                 ) : (
                   <FlatList 
@@ -237,6 +241,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  background: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: '100%'
+  },
   map: {
     width: '100%',
     height: '100%',
@@ -251,7 +262,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: Colors.primary500,
     borderRadius: 10,
-    padding: 6,
+    // padding: 6,
     alignItems: 'center',
     height: '100%',
     justifyContent: 'space-between'
@@ -274,7 +285,7 @@ const styles = StyleSheet.create({
   shopName: {
     fontSize: 36,
     fontFamily: 'park-m',
-    color: Colors.orange100,
+    color: Colors.blue,
     textTransform: 'uppercase'
   },
   appointBtn: {
@@ -286,20 +297,26 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 10
   },
-  timeText: {
-    color: Colors.orange100,
-    // textAlign: 'center',
+  openTimeText: {
+    color: Colors.blue,
     padding: 9,
     fontSize: 23,
-    fontFamily: 'park-r'
+    fontFamily: 'park-m'
+  },
+  closeTimeText: {
+    color: 'orange',
+    padding: 9,
+    fontSize: 23,
+    fontFamily: 'park-m'
   },
   timeContainer: {
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.backgroundFade,
     marginVertical: 15,
     marginHorizontal: 10,
     paddingVertical: 13,
     paddingHorizontal: 12,
-    borderRadius: 14
+    borderRadius: 14,
+    elevation: 5
   }
 });
 
