@@ -88,13 +88,13 @@ export default function Settings() {
             <View style={{padding: 16}}>
                 <Text style={styles.nameText}>Name:</Text>
                 <TextInput 
-                placeholder=' Enter your Name...'
-                placeholderTextColor={Colors.whiteFade}
-                cursorColor={Colors.whiteFade}
-                keyboardType='default'
-                value={name}
-                onChangeText={setName}
-                style={styles.input}
+                    placeholder=' Enter your Name...'
+                    placeholderTextColor={Colors.whiteFade}
+                    cursorColor={Colors.whiteFade}
+                    keyboardType='default'
+                    value={name}
+                    onChangeText={setName}
+                    style={styles.input}
                 />
             </View>
             <View style={{padding: 16, flex: 1, maxHeight: 190}}>
@@ -132,7 +132,8 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         fontSize: 20,
         fontFamily: 'park-r',
-        color: Colors.white100
+        color: Colors.white100,
+        paddingVertical: 10
     },
     nameText: {
         fontSize: 20,

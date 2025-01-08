@@ -27,7 +27,7 @@
       ],
       "config": {
         "googleMaps": {
-          "apiKey": "AIzaSyCTiZAspHCRRqNiWc2iXQ8cztCiiMAPOoo"  
+          "apiKey": "AIzaSyCTiZAspHCRRqNiWc2iXQ8cztCiiMAPOoo"
         }
       }
     },
@@ -66,21 +66,13 @@
         {
           "image": "./assets/images/splash.png",
           "imageWidth": 400,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "resizeMode": "cover",
+          "backgroundColor": "#000000"
         }
       ]
     ],
     "experiments": {
       "typedRoutes": true
-    },
-    "extra": {
-      "router": {
-        "origin": false
-      },
-      "eas": {
-        "projectId": "b64dc762-3caf-428b-a294-780e5e757ef5"
-      }
     }
   }
 }

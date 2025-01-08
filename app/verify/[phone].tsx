@@ -193,7 +193,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     fontSize: 20,
     fontFamily: 'park-r',
-    color: Colors.white100
+    color: Colors.white100,
+    paddingVertical: 10
   },
   button: {
     width: '100%',
